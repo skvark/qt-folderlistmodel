@@ -39,10 +39,10 @@
 **
 ****************************************************************************/
 
-#ifndef QDECLARATIVEFOLDERLISTMODEL_H
-#define QDECLARATIVEFOLDERLISTMODEL_H
+#ifndef QQUICKFOLDERLISTMODEL_H
+#define QQUICKFOLDERLISTMODEL_H
 
-#include <qdeclarative.h>
+#include <qqml.h>
 #include <QStringList>
 #include <QUrl>
 #include <QAbstractListModel>
@@ -54,16 +54,16 @@ QT_BEGIN_HEADER
 QT_BEGIN_NAMESPACE
 
 
-class QDeclarativeContext;
+class QQmlContext;
 class QModelIndex;
 
-class QDeclarativeFolderListModelPrivate;
+class QQuickFolderListModelPrivate;
 
 //![class begin]
-class QDeclarativeFolderListModel : public QAbstractListModel, public QDeclarativeParserStatus
+class QQuickFolderListModel : public QAbstractListModel, public QQmlParserStatus
 {
     Q_OBJECT
-    Q_INTERFACES(QDeclarativeParserStatus)
+    Q_INTERFACES(QQmlParserStatus)
 //![class begin]
 
 //![class props]
@@ -80,8 +80,8 @@ class QDeclarativeFolderListModel : public QAbstractListModel, public QDeclarati
 
 //![abslistmodel]
 public:
-    QDeclarativeFolderListModel(QObject *parent = 0);
-    ~QDeclarativeFolderListModel();
+    QQuickFolderListModel(QObject *parent = 0);
+    ~QQuickFolderListModel();
 
     enum Roles { FileNameRole = Qt::UserRole+1, FilePathRole = Qt::UserRole+2 };
 
@@ -141,19 +141,19 @@ private Q_SLOTS:
     void handleDataChanged(const QModelIndex &start, const QModelIndex &end);
 
 private:
-    Q_DISABLE_COPY(QDeclarativeFolderListModel)
-    QDeclarativeFolderListModelPrivate *d;
+    Q_DISABLE_COPY(QQuickFolderListModel)
+    QQuickFolderListModelPrivate *d;
 };
 //![class end]
 
 QT_END_NAMESPACE
 
 //![qml decl]
-QML_DECLARE_TYPE(QDeclarativeFolderListModel)
+QML_DECLARE_TYPE(QQuickFolderListModel)
 //![qml decl]
 
 QT_END_HEADER
 
 #endif // QT_NO_DIRMODEL
 
-#endif // QDECLARATIVEFOLDERLISTMODEL_H
+#endif // QQUICKFOLDERLISTMODEL_H
